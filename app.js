@@ -21,9 +21,6 @@ $("#searchButton").on("click", function () {
     query = $("#searchTerm").val();
     sDate = $("#startYear").val().toString();
     eDate = $("#endYear").val().toString();
-    preset = $(".numResults").data("number");
-    preset1 = document.querySelectorAll('[data-number]').toString();
-    console.log("first " + preset1);
 
 
     url += '?' + $.param({
@@ -41,8 +38,7 @@ $("#searchButton").on("click", function () {
         let getInfo = result.response.docs;
         let getLength = getInfo.length;
 
-        for (let i = 1; i < preset + 1; i++) {
-            console.log("looped" + preset);
+        for (let i = 1; i < getLength + 1; i++) {
 
             let article = $("<div>")
 
@@ -59,7 +55,6 @@ $("#searchButton").on("click", function () {
 });
 
 function restart() {
-
     $("#display-results").empty();
     url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     query = "";
